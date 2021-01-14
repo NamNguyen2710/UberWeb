@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import { Route, Switch } from 'react-router-dom';
 import Home from './containers/Home Page/Home';
 import Booking from './containers/Booking Page/Booking';
