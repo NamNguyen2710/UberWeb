@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import fb_ico from '../../images/Fb_icon.png';
-import yt_ico from '../../images/youtube_icon.png';
-import linked_ico from '../../images/Linkedin_icon.png';
-import './Footer.css'
+import fb_ico from '../images/Fb_icon.png';
+import yt_ico from '../images/youtube_icon.png';
+import linked_ico from '../images/Linkedin_icon.png';
 
 class Footer extends React.Component{
   render() {

@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import { Route, Switch } from 'react-router-dom';
 import Home from './containers/Home Page/Home';
 import Booking from './containers/Booking Page/Booking';
@@ -13,17 +13,17 @@ import Privacy from './containers/Static Pages/Privacy';
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="width-100">
         <Header />
-          <Switch>
-            <Route exact path="/"><Home/></Route>
-            <Route exact path="/login"><Login/></Route>
-            <Route exact path="/signup"><SignUp/></Route>
-            <Route exact path="/booking"><Booking/></Route>
-            <Route exact path="/contactus"><ContactUs/></Route>
-            <Route exact path="/how"><HowItWorks/></Route>
-            <Route exact path="/privacy"><Privacy/></Route>
-          </Switch>
+        <Switch>
+          <Route exact path="/"><Home/></Route>
+          <Route exact path="/login"><Login/></Route>
+          <Route exact path="/signup"><SignUp/></Route>
+          <Route exact path="/booking"><Booking/></Route>
+          <Route exact path="/contactus"><ContactUs/></Route>
+          <Route exact path="/how"><HowItWorks/></Route>
+          <Route exact path="/privacy"><Privacy/></Route>
+        </Switch>
         <Footer />
       </div>
     );

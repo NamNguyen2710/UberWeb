@@ -1,5 +1,4 @@
 import React from 'react';
-import './Dropdown.css'
 
 class Dropdown extends React.Component {
   constructor(props) {
@@ -37,7 +36,7 @@ class Dropdown extends React.Component {
   render() {
     return (
       <div className="dropdown" ref={this.dropdown}>
-        <button className="dropdowBtn" onClick={this.handleButtonClick}>☰</button>
+        <button className="dropdownBtn" onClick={this.handleButtonClick}>☰</button>
         { this.state.isDropDown && (
           <div className="dropdownList"> 
             <ul>

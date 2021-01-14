@@ -1,8 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import './Header.css';
-import uberIco from "../../images/Uber_Icon.png";
-import Dropdown from '../Dropdown/Dropdown';
+import uberIco from "../images/Uber_Icon.png";
+import Dropdown from './Dropdown';
 
 class Header extends React.Component{
   render() {
