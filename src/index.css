@@ -11,7 +11,7 @@ div {
 }
 
 .white-box {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   width: auto;
 }
 
@@ -24,6 +24,7 @@ div {
   width: 100vw;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding-top: 75px;
 }
 
@@ -47,6 +48,16 @@ div {
   width: 100vw;
   left: 0;
   position: absolute;
+}
+
+.clickable-line {
+  color: rgb(12, 159, 196);
+}
+
+.clickable-line:hover {
+  color: rgb(16, 135, 165);
+  text-decoration: rgb(16, 135, 165) underline;
+  cursor: pointer;
 }
 
 /* #### Header #### */
@@ -172,4 +183,105 @@ div {
 
 .homepage .box img {
   height: 250px;
+}
+
+/* #### Sign Up #### */
+
+.signupForm {
+  padding: 20px 0;
+  max-width: 400px;
+  width: 50vw;
+  min-width: 300px;
+}
+
+.input-box {
+  height: 50px;
+  border: none;
+  box-shadow: 10px 10px 10px grey;
+  padding: 0 10px;
+  flex-grow: 1;
+}
+
+.input-row {
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  padding-bottom: 20px;
+}
+
+.round-btn {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  align-self: flex-end;
+  border-color: gray;
+}
+
+.otp-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 20px 0;
+}
+
+.otp-box {
+  width: 50px;
+  height: 50px;
+  border: none;
+  box-shadow: 10px 10px 40px gray;
+  text-align: center;
+}
+
+.gender-radio { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.gender-ava {
+  cursor: pointer;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.gender-radio:checked + .gender-ava {
+  box-shadow: 0 0 10pt 2pt gray;
+}
+
+.ava-input {
+  visibility: hidden;
+}
+
+.upload-ava-row {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.upload-ava-box {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.upload-ava {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+.upload-ava-text {
+  display: inline-block;
+  margin-left: 20px;
 }
