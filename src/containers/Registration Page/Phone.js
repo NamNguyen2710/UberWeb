@@ -1,11 +1,11 @@
-import { Form, Field, withFormik } from 'formik';
+import { Form, Field, ErrorMessage, withFormik } from 'formik';
 import * as yup from 'yup';
 
 const Phone = (props) => {
   return (
     <div className="signupForm">
-      <h2>Get moving with Uber</h2>
       <Form className="col">
+        <h2>Get moving with Uber</h2>
         <div className="input-row">
           <Field className="input-box" as="select" name="postalCode">
             { props.postalCodeList.map(value => <option value={value} key={value}>{value}</option>) }
@@ -17,6 +17,9 @@ const Phone = (props) => {
             placeholder="Enter your mobile number" 
           />
         </div>
+        <ErrorMessage name="phoneNumber">
+          { msg => <div className="error-msg">{msg}</div> }
+        </ErrorMessage>
         <label>
           <Field
             type="checkbox" 
@@ -24,6 +27,9 @@ const Phone = (props) => {
           />
           Agree Terms and Conditions
         </label>
+        <ErrorMessage name="agreeTerm">
+          { msg => <div className="error-msg">{msg}</div> }
+        </ErrorMessage>
         <button className="round-btn" type="submit">→</button>
       </Form>
     </div>
@@ -35,12 +41,12 @@ const PhoneForm = props => {
     postalCode: yup
       .string()
       .required()
-      .oneOf([...props.postalCodeList, "Choose your country postal code."]),
+      .oneOf([...props.postalCodeList, "Choose your country postal code"]),
     phoneNumber: yup
-      .number()
-      .min(8)
-      .max(10)
-      .required(),
+      .number("Please enter valid phone number")
+      .min(10000000, "Please enter valid phone number")
+      .max(999999999999, "Please enter valid phone number")
+      .required("Please enter your phone number"),
     agreeTerm: yup
       .boolean()
       .oneOf([true], "The terms and conditions must be accepted."),
@@ -53,7 +59,7 @@ const PhoneForm = props => {
       agreeTerm: false,
     }),
     handleSubmit: (values, bag) => bag.props.handleSubmit(values, bag.setSubmitting),
-    // validationSchema: SignUpValidation,
+    validationSchema: SignUpValidation,
   })(Phone);
   return <PhoneFormWithFormik {...props} />
 }

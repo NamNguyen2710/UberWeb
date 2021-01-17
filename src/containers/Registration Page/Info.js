@@ -74,8 +74,13 @@ const InfoForm = props => {
   });
 
   const InfoFormWithFormik = withFormik({
+    mapPropsToValues: () => ({
+      name: "",
+      gender: "",
+      avatar: {},
+    }),
     handleSubmit: handleSubmit,
-    validationSchema: SignUpValidation,
+    // validationSchema: SignUpValidation,
   })(Info);
   return <InfoFormWithFormik {...props} />
 }

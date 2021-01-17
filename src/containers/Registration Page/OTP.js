@@ -1,7 +1,6 @@
 import {useState} from 'react';
 
 const Otp = (props) => {
-  console.log(props)
   const [otp, setOtp] = useState(new Array(4).fill(''));
   const handleChange = (element, index) => {
     setOtp([...otp.map((val, idx) => idx === index ? element.value : val)]);
@@ -9,6 +8,7 @@ const Otp = (props) => {
       element.nextSibling.focus();
     }
   }
+  const handleSubmit = () => { props.handleSubmit(otp) };
   return (
     <div className="signupForm">
       <div className="col">
@@ -28,8 +28,9 @@ const Otp = (props) => {
             />
           )}
         </div>
+        <p className="error-msg">{props.error}</p>
         <p className="clickable-line">I didn’t receive code.</p>
-        <button className="round-btn" onClick={props.handleSubmit}>→</button>
+        <button className="round-btn" onClick={handleSubmit}>→</button>
       </div>
     </div>
   );

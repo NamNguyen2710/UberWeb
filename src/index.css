@@ -1,6 +1,7 @@
 /* #### General #### */
 div {
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
 }
 
 .black-btn {
@@ -16,7 +17,7 @@ div {
 }
 
 .general-bg {
-  background-image: url('./images/background.jpg');
+  background-image: url("./images/background.jpg");
   background-attachment: fixed;
   background-size: 100% auto;
   background-repeat: no-repeat;
@@ -58,6 +59,16 @@ div {
   color: rgb(16, 135, 165);
   text-decoration: rgb(16, 135, 165) underline;
   cursor: pointer;
+}
+
+input.error {
+  border-color: rgb(238, 50, 50);
+}
+
+.error-msg {
+  color: rgb(238, 50, 50);
+  display: block;
+  margin-bottom: 20px;
 }
 
 /* #### Header #### */
@@ -156,7 +167,7 @@ div {
   text-decoration: none;
 }
 
-.dropdownList li:hover { 
+.dropdownList li:hover {
   background-color: rgba(0, 0, 0, 0.14);
   cursor: pointer;
 }
@@ -164,7 +175,7 @@ div {
 /* #### Homepage #### */
 
 .homepage {
-  background-image: url('./images/uber_home_bg.png');
+  background-image: url("./images/uber_home_bg.png");
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-attachment: fixed;
@@ -232,7 +243,7 @@ div {
   text-align: center;
 }
 
-.gender-radio { 
+.gender-radio {
   position: absolute;
   opacity: 0;
   width: 0;
@@ -276,9 +287,9 @@ div {
   top: 50%;
   height: 100%;
   width: auto;
-  -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .upload-ava-text {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import {UserContext} from '../../components/User-context';
 import Info from './Info';
 import Otp from './OTP';
@@ -11,14 +11,15 @@ class SignUp extends React.Component {
     this.state = {
       signUpStep: 1,
       phone: '',
+      otpError: '',
       user: '',
+      redirect: null,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.revertStep = this.revertStep.bind(this);
   }
 
   handleSubmit(values, setSubmitting) {
-    console.log(values)
     switch (this.state.signUpStep) {
       case 1: 
         this.setState({ 
@@ -28,19 +29,20 @@ class SignUp extends React.Component {
         setSubmitting(false);
         break;
       case 2:
-        this.setState({
-          signUpStep: 3,
-        });
+        //check OTP
+        if (values.indexOf('') > -1) {
+          this.setState({ otpError: "Incorrect OTP" })
+        } else
+          this.setState({ signUpStep: 3 });
         break;
       case 3:
         this.setState({
           user: values.username,
+          redirect: "/"
         });
-        setSubmitting(false);
-        withRouter( ({history}) => {history.push('/')});
         break;
       default:
-        withRouter( ({history}) => {history.push('/')});
+        this.setState({redirect: "/"});
     }
   }
 
@@ -53,7 +55,12 @@ class SignUp extends React.Component {
     let signUpStep;
     switch (this.state.signUpStep) {
       case 2:
-        signUpStep = <Otp handleSubmit={this.handleSubmit} phoneNumber={this.state.phone} revertStep={this.revertStep} />
+        signUpStep = <Otp 
+          handleSubmit={this.handleSubmit} 
+          phoneNumber={this.state.phone} 
+          revertStep={this.revertStep} 
+          error={this.state.otpError} 
+        />
         break;
       case 3:
         signUpStep = <Info handleSubmit={this.handleSubmit} />
@@ -61,6 +68,9 @@ class SignUp extends React.Component {
       default:
         signUpStep = <Phone handleSubmit={this.handleSubmit} postalCodeList={postalCode} />
     }
+
+    if (this.state.redirect) return <Redirect to={this.state.redirect} />
+
     return (
       <div className="general-bg">
         <div className="white-box">
