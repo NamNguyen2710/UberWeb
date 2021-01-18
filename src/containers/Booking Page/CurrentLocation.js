@@ -1,34 +1,37 @@
-import React, {useState, useEffect} from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import React, {useState, useEffect, useRef} from 'react';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
-function CurrentLocation(props) {
+function MyMap(props) {
   const [location, setLocation] = useState();
 
-  const map = useMap();
+  const mapRef = useRef(null);
 
   useEffect(() => {
+    const { current = {} } = mapRef;
+    const { leafletElement: map} = current;
     map.locate({setView: true});
-    map.on("locationfound", (e) => {setLocation(e.latlng)})
+    map.on("locationfound", (e) => {
+      props.searchHome({lat: e.latlng.lat, lng: e.latlng.lng})
+      setLocation(e.latlng)
+    });
   }, []);
 
-  return ( (location === null || location === undefined) ? null : (
-    <Marker position={location}>
-      <Popup>You are here</Popup>
-    </Marker> 
-  ));
-}
-
-function MyMap() {
   return (
-    <MapContainer
+    <Map
       className="map"
+      ref={mapRef}
       center={[-37.8136, 144.9631]}
       zoom={14}
     >
       <TileLayer attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <CurrentLocation />
-    </MapContainer>
+      { (location === null || location === undefined) ? null : (
+        <Marker position={location}>
+          <Popup>You are here</Popup>
+        </Marker>
+      )}
+      {props.children}
+    </Map>
   );
 }
 
