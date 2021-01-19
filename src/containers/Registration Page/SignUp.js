@@ -12,7 +12,6 @@ class SignUp extends React.Component {
       signUpStep: 1,
       phone: '',
       otpError: '',
-      user: '',
       redirect: null,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,10 +35,8 @@ class SignUp extends React.Component {
           this.setState({ signUpStep: 3 });
         break;
       case 3:
-        this.setState({
-          user: values.username,
-          redirect: "/"
-        });
+        this.props.changeUser(values);
+        this.setState({redirect: "/booking"});
         break;
       default:
         this.setState({redirect: "/"});
@@ -74,14 +71,18 @@ class SignUp extends React.Component {
     return (
       <div className="general-bg">
         <div className="white-box">
-          <UserContext.Provider value={this.state.user}>
-            {signUpStep}
-          </UserContext.Provider>
+          {signUpStep}
         </div>
       </div>
     );
   }
 }
-SignUp.contextType = UserContext;
 
-export default SignUp;
+const SignUpWithContext = () => 
+    <UserContext.Consumer>
+      {({changeUser}) => 
+        <SignUp changeUser={changeUser} />
+      }
+    </UserContext.Consumer>
+
+export default SignUpWithContext;

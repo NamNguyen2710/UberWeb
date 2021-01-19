@@ -112,6 +112,23 @@ input.error {
   margin: 0 5px;
 }
 
+.userBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.userScore {
+  font-size: small;
+  color: gray;
+}
+
+.userBox img {
+  height: 30px;
+  width: 30px;
+  margin: 0 10px;
+}
+
 /* #### Footer #### */
 
 .footer {
@@ -181,6 +198,13 @@ input.error {
   cursor: pointer;
 }
 
+.inline-arrow {
+  display: inline;
+  font-size: 24px;
+  font-weight: bolder;
+  padding: 0 10px;
+}
+
 /* #### Homepage #### */
 
 .homepage {
@@ -199,10 +223,12 @@ input.error {
   width: 300px;
   margin: 0;
   padding: 25px;
+  display: flex;
+  flex-direction: column;
 }
 
 .homepage .box img {
-  height: 250px;
+  height: 280px;
 }
 
 /* #### Sign Up #### */

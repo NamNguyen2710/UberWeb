@@ -9,22 +9,42 @@ import Login from './containers/Login Page/Login';
 import ContactUs from './containers/ContactUs Page/ContactUs';
 import HowItWorks from './containers/Static Pages/HowItWorks';
 import Privacy from './containers/Static Pages/Privacy';
+import {UserContext} from './components/User-context';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    
+    this.changeUser = (value) => {
+      this.setState({
+        user: value.name,
+        gender: value.gender,
+      })
+    }
+
+    this.state = {
+      user: "",
+      gender: "",
+      changeUser: this.changeUser,
+    }
+  }
+
   render() {
     return (
       <div className="width-100">
-        <Header />
-        <Switch>
-          <Route exact path="/"><Home/></Route>
-          <Route exact path="/login"><Login/></Route>
-          <Route exact path="/signup"><SignUp/></Route>
-          <Route exact path="/booking"><Booking/></Route>
-          <Route exact path="/contactus"><ContactUs/></Route>
-          <Route exact path="/how"><HowItWorks/></Route>
-          <Route exact path="/privacy"><Privacy/></Route>
-        </Switch>
-        <Footer />
+        <UserContext.Provider value={this.state}>
+          <Header />
+          <Switch>
+            <Route exact path="/"><Home/></Route>
+            <Route exact path="/login"><Login/></Route>
+            <Route exact path="/signup"><SignUp/></Route>
+            <Route exact path="/booking"><Booking/></Route>
+            <Route exact path="/contactus"><ContactUs/></Route>
+            <Route exact path="/how"><HowItWorks/></Route>
+            <Route exact path="/privacy"><Privacy/></Route>
+          </Switch>
+          <Footer />
+        </UserContext.Provider>
       </div>
     );
   }
