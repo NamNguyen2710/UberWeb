@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { Form, Field, withFormik } from 'formik';
+import { Form, Field, ErrorMessage,withFormik } from 'formik';
 import * as yup from 'yup';
 import male_avatar from '../../images/male-icon.png';
 import female_avatar from '../../images/female-icon.png';
@@ -31,6 +31,9 @@ const Info = (props) => {
             name="name" 
             placeholder="Enter your full name" 
           />
+          <ErrorMessage name="name">
+            { msg => <div className="error-msg">{msg}</div> }
+          </ErrorMessage>
           <h4>Select gender</h4>
           <div>
             <label>
@@ -42,6 +45,9 @@ const Info = (props) => {
               <img className="gender-ava" src={female_avatar} alt="female-avatar" />
             </label>
           </div>
+          <ErrorMessage name="gender">
+            { msg => <div className="error-msg">{msg}</div> }
+          </ErrorMessage>
           <input 
             className="ava-input"
             type="file" 
@@ -67,10 +73,10 @@ const InfoForm = props => {
   const SignUpValidation = yup.object().shape({
     name: yup
       .string()
-      .required(),
+      .required("Please enter your full name"),
     gender: yup
       .string()
-      .required(),
+      .required("Please choose your gender"),
   });
 
   const InfoFormWithFormik = withFormik({
@@ -79,8 +85,8 @@ const InfoForm = props => {
       gender: "",
       avatar: {},
     }),
-    handleSubmit: handleSubmit,
-    // validationSchema: SignUpValidation,
+    handleSubmit: (values, bag) => bag.props.handleSubmit(values, bag.setSubmitting),
+    validationSchema: SignUpValidation,
   })(Info);
   return <InfoFormWithFormik {...props} />
 }
