@@ -155,6 +155,11 @@ input.error {
   margin: 5px;
 }
 
+.footer-link {
+  display: inline-block;
+  margin-right: 10px;
+}
+
 /* #### Dropdown #### */
 
 .dropdown {
@@ -384,4 +389,34 @@ input.error {
 .back-btn {
   border: none;
   background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* #### Contact Us #### */
+
+.contact-box {
+  width: 90vw;
+  max-width: 600px;
+  display: flex;
+}
+
+.contact-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%
+}
+
+.input-col {
+  width: 50%;
+  margin-right: 10px;
+}
+
+.input-lable {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 0 5px;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: rgb(78, 78, 78)
 }

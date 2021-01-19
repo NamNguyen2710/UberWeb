@@ -69,7 +69,6 @@ const Info = (props) => {
 }
 
 const InfoForm = props => {
-  const { handleSubmit } = props;
   const SignUpValidation = yup.object().shape({
     name: yup
       .string()
