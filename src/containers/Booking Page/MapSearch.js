@@ -1,14 +1,14 @@
 import ReactLeafletSearch from 'react-leaflet-search';
-import { Marker, Popup } from 'react-leaflet';
-import "resource://gre/modules/Geometry.jsm"
-;
+import { LatLng } from 'leaflet';
+
 function MapSearch(props) {
   return (
     <ReactLeafletSearch 
-      position="topleft" 
-      search={new Point(props.initSearch.lat, props.initSearch.lng)}
-      onChange={({info}) => {props.handleSearchFound(info)}}
+      position="topleft"
+      search={props.firstSearch ? new LatLng(props.initSearch.lat, props.initSearch.lng) : ''}
+      onChange={({latLng, info}) => {props.handleSearchFound(latLng, info)}}
       inputPlaceholder="Where would you like to go?"
+      showMarker={false}
     />
   );
 }

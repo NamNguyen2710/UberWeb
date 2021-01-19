@@ -1,5 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
+import L from 'leaflet';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import current_marker from '../../images/current-marker.svg';
 
 function MyMap(props) {
   const [location, setLocation] = useState();
@@ -14,7 +16,17 @@ function MyMap(props) {
       props.searchHome({lat: e.latlng.lat, lng: e.latlng.lng})
       setLocation(e.latlng)
     });
+    map.on("locationerror", () => {
+      props.searchHome({lat: null, lng: null});
+    })
   }, []);
+
+  const currentMarker = new L.Icon({
+      iconUrl: current_marker,
+      iconRetinaUrl: current_marker,
+      popupAnchor:  [-0, -0],
+      iconSize: [32,32],     
+  });
 
   return (
     <Map
@@ -26,7 +38,7 @@ function MyMap(props) {
       <TileLayer attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       { (location === null || location === undefined) ? null : (
-        <Marker position={location}>
+        <Marker position={location} icon={currentMarker}>
           <Popup>You are here</Popup>
         </Marker>
       )}
