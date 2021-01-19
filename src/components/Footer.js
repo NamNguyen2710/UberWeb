@@ -11,9 +11,9 @@ class Footer extends React.Component{
         <div className="flex">
           <div className="termBox">
             <div>2021 Uber Technologies Inc. All Rights Reserved</div>
-            <Link to="/how">Terms of Use</Link>
-            <Link to="/">Legal Notices</Link>
-            <Link to="/privacy">Privacy & Security</Link>
+            <Link className="footer-link" to="/how">Terms of Use</Link>
+            <Link className="footer-link" to="/">Legal Notices</Link>
+            <Link className="footer-link" to="/privacy">Privacy & Security</Link>
           </div>
           <div className="iconBox">
             <a href="https://www.facebook.com"><img className="icon" src={fb_ico} alt="Fb_icon"/></a>
