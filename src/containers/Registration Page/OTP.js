@@ -2,13 +2,24 @@ import {useState} from 'react';
 
 const Otp = (props) => {
   const [otp, setOtp] = useState(new Array(4).fill(''));
+  
   const handleChange = (element, index) => {
     setOtp([...otp.map((val, idx) => idx === index ? element.value : val)]);
-    if (element.nextSibling) {
-      element.nextSibling.focus();
-    }
+    
   }
+  const inputFocus = (event) => {
+    if (event.key === "Delete" || event.key === "Backspace") {
+      if (event.target.previousSibling) {
+        event.target.previousSibling.focus()
+      }
+    } else {
+      if (event.target.nextSibling) {
+        event.target.nextSibling.focus();
+      }
+    }
+  };
   const handleSubmit = () => { props.handleSubmit(otp) };
+
   return (
     <div className="signupForm">
       <div className="col">
@@ -25,6 +36,7 @@ const Otp = (props) => {
               key={index}
               value={value}
               onChange={event => handleChange(event.target, index)}
+              onKeyUp={event => inputFocus(event, index)}
             />
           )}
         </div>
