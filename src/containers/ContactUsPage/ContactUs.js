@@ -79,7 +79,6 @@ const ContactUs = () => {
 }
 
 const ContactUsForm = withRouter((props) => {
-  console.log(props)
   const ContactValidation = yup.object().shape({
     name: yup 
       .string()
