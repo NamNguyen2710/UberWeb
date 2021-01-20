@@ -2,13 +2,13 @@ import React from 'react';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Route, Switch } from 'react-router-dom';
-import Home from './containers/Home Page/Home';
-import Booking from './containers/Booking Page/Booking';
-import SignUp from './containers/Registration Page/SignUp';
-import Login from './containers/Login Page/Login';
-import ContactUs from './containers/ContactUs Page/ContactUs';
-import HowItWorks from './containers/Static Pages/HowItWorks';
-import Privacy from './containers/Static Pages/Privacy';
+import Home from './containers/HomePage/Home';
+import Booking from './containers/BookingPage/Booking';
+import SignUp from './containers/RegistrationPage/SignUp';
+import Login from './containers/LoginPage/Login';
+import ContactUs from './containers/ContactUsPage/ContactUs';
+import HowItWorks from './containers/StaticPages/HowItWorks';
+import Privacy from './containers/StaticPages/Privacy';
 
 class App extends React.Component {
   render() {
