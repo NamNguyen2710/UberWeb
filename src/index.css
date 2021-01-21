@@ -210,12 +210,14 @@ input.error {
   border: none;
   box-shadow: 10px 10px 10px grey;
   padding: 0 10px;
+  margin-left: 5px;
   flex-grow: 1;
 }
 
 .input-row {
   display: flex;
-  align-items: stretch;
+  align-content: stretch;
+  align-items: center;
   flex-direction: row;
   padding-bottom: 20px;
 }
@@ -295,4 +297,11 @@ input.error {
 .upload-ava-text {
   display: inline-block;
   margin-left: 20px;
+}
+
+/* #### Login #### */
+
+.login-form {
+  width: 40vw;
+  min-width: 300px;
 }
