@@ -12,7 +12,7 @@ const Info = (props) => {
     let file = event.currentTarget.files[0];
     props.setFieldValue("file", file);
     let reader = new FileReader();
-    let url = reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
     reader.onloadend = () => {setImgSrc(reader.result)};
   }
 
