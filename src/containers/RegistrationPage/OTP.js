@@ -1,22 +1,33 @@
-import {useState} from 'react';
+import { useState } from "react";
 
 const Otp = (props) => {
-  const [otp, setOtp] = useState(new Array(4).fill(''));
+  const [otp, setOtp] = useState(new Array(4).fill(""));
+  const [otpError, setOtpError] = useState("");
+
   const handleChange = (element, index) => {
-    setOtp([...otp.map((val, idx) => idx === index ? element.value : val)]);
+    setOtp([...otp.map((val, idx) => (idx === index ? element.value : val))]);
     if (element.nextSibling) {
       element.nextSibling.focus();
     }
-  }
-  const handleSubmit = () => { props.handleSubmit(otp) };
+  };
+  const handleSubmit = () => {
+    if (otp.indexOf("") > -1) {
+      setOtpError("Incorrect OTP");
+    } else {
+      props.handleSubmit(otp);
+    }
+  };
+
   return (
     <div className="signupForm">
       <div className="col">
         <p>Enter the 4-digit code sent to you at {props.phoneNumber}. </p>
-        <p className="clickable-line" onClick={props.revertStep} >Did you enter the correct number?</p>
+        <p className="clickable-line" onClick={props.revertStep}>
+          Did you enter the correct number?
+        </p>
         <div className="otp-row">
-          { otp.map((value, index) => 
-            <input 
+          {otp.map((value, index) => (
+            <input
               className="otp-box"
               type="text"
               name="otp"
@@ -24,16 +35,19 @@ const Otp = (props) => {
               maxLength="1"
               key={index}
               value={value}
-              onChange={event => handleChange(event.target, index)}
+              autoFocus={index === 0}
+              onChange={(event) => handleChange(event.target, index)}
             />
-          )}
+          ))}
         </div>
-        <p className="error-msg">{props.error}</p>
+        <p className="error-msg">{otpError}</p>
         <p className="clickable-line">I didn’t receive code.</p>
-        <button className="round-btn" onClick={handleSubmit}>→</button>
+        <button className="round-btn" onClick={handleSubmit}>
+          →
+        </button>
       </div>
     </div>
   );
-}
+};
 
 export default Otp;
