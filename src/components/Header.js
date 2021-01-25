@@ -41,19 +41,7 @@ class Header extends React.Component {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/">Profile</Link>
-              </li>
-              <li>
-                <Link to="/">Your Book</Link>
-              </li>
-              <li>
-                <Link to="/">Favorites</Link>
-              </li>
-              <li>
-                <Link to="/">Notifications</Link>
-              </li>
-              <li>
-                <Link to="/">Setting</Link>
+                <Link to="/booking">Your Book</Link>
               </li>
             </Dropdown>
           </div>
