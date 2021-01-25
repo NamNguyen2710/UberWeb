@@ -38,7 +38,7 @@ class SignUp extends React.Component {
       case 3:
         this.setState({
           user: values.username,
-          redirect: "/"
+          redirect: "/booking",
         });
         break;
       default:
