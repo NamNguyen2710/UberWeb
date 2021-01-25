@@ -1,12 +1,12 @@
-import React from 'react';
-import {Link} from "react-router-dom";
-import Dropdown from './Dropdown';
-import {UserContext} from './User-context';
+import React from "react";
+import { Link } from "react-router-dom";
+import Dropdown from "./Dropdown";
+import { UserContext } from "./User-context";
 import uberIco from "../images/Uber_Icon.png";
 import maleIco from "../images/male-icon.png";
 import femaleIco from "../images/female-icon.png";
 
-class Header extends React.Component{
+class Header extends React.Component {
   render() {
     return (
       <div className="header">
@@ -17,7 +17,7 @@ class Header extends React.Component{
           </div>
           <div className="row">
             <UserContext.Consumer>
-              {({user, gender}) => { 
+              {({ user, gender }) => {
                 if (user !== "") {
                   return (
                     <div className="userBox">
@@ -25,21 +25,36 @@ class Header extends React.Component{
                         <div className="userName">{user}</div>
                         <div className="userScore">4.89★</div>
                       </div>
-                      <img src={gender === "male" ? maleIco : femaleIco} alt="avatar-ico" />
+                      <img
+                        src={gender === "male" ? maleIco : femaleIco}
+                        alt="avatar-ico"
+                      />
                     </div>
-                  )
+                  );
                 } else {
                   return null;
                 }
               }}
             </UserContext.Consumer>
             <Dropdown>
-              <li><Link to='/'>Home</Link></li>
-              <li><Link to='/'>Profile</Link></li>
-              <li><Link to='/'>Your Book</Link></li>
-              <li><Link to='/'>Favorites</Link></li>
-              <li><Link to='/'>Notifications</Link></li>
-              <li><Link to='/'>Setting</Link></li>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/">Profile</Link>
+              </li>
+              <li>
+                <Link to="/">Your Book</Link>
+              </li>
+              <li>
+                <Link to="/">Favorites</Link>
+              </li>
+              <li>
+                <Link to="/">Notifications</Link>
+              </li>
+              <li>
+                <Link to="/">Setting</Link>
+              </li>
             </Dropdown>
           </div>
         </div>
