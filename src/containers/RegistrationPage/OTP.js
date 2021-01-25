@@ -1,8 +1,8 @@
-import { useState } from "react";
+import React from "react";
 
 const Otp = (props) => {
-  const [otp, setOtp] = useState(new Array(4).fill(""));
-  const [otpError, setOtpError] = useState("");
+  const [otp, setOtp] = React.useState(new Array(4).fill(""));
+  const [otpError, setOtpError] = React.useState("");
 
   const handleChange = (element, index) => {
     setOtp([...otp.map((val, idx) => (idx === index ? element.value : val))]);
@@ -11,6 +11,7 @@ const Otp = (props) => {
     }
   };
   const handleSubmit = () => {
+    console.log(otp);
     if (otp.indexOf("") > -1) {
       setOtpError("Incorrect OTP");
     } else {

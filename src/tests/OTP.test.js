@@ -57,22 +57,19 @@ describe("sign up otp form", () => {
       />
     );
 
-    wrapper.find(".clickable-line").first().simulate("click");
-    await waitFor(() => {
-      expect(revertStep).toHaveBeenCalled();
-    });
-
-    for (let i = 0; i++; i <= 3) {
+    const otpInput = [0, 1, 2, 3];
+    otpInput.forEach(async (i) => {
       wrapper.find('input[name="otp"]').at(i).props().onChange(event);
       wrapper.update();
       await waitFor(() => {
         expect(wrapper.find('input[name="otp"]').at(i).props().value).toBe("5");
         expect(event.target.nextSibling.focus).toHaveBeenCalledTimes(i + 1);
       });
-    }
+    });
 
     wrapper.find("button").simulate("click");
     await waitFor(() => {
+      console.log();
       expect(handleSubmit).toHaveBeenCalled();
     });
   });
