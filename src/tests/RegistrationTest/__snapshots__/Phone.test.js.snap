@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sign up phone form render correctly 1`] = `
+<div
+  className="signupForm"
+>
+  <form
+    action="#"
+    className="col"
+    onReset={[Function]}
+    onSubmit={[Function]}
+  >
+    <h2>
+      Get moving with Uber
+    </h2>
+    <div
+      className="input-row"
+    >
+      <select
+        className="input-box"
+        name="postalCode"
+        onBlur={[Function]}
+        onChange={[Function]}
+      />
+      <input
+        className="input-box"
+        name="phoneNumber"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Enter your mobile number"
+        type="tel"
+        value=""
+      />
+    </div>
+    <label>
+      <input
+        checked={false}
+        name="agreeTerm"
+        onBlur={[Function]}
+        onChange={[Function]}
+        type="checkbox"
+        value={false}
+      />
+      Agree Terms and Conditions
+    </label>
+    <button
+      className="round-btn"
+      type="submit"
+    >
+      →
+    </button>
+  </form>
+</div>
+`;

@@ -1,10 +1,8 @@
 import React from "react";
 import Booking from "../../containers/BookingPage/Booking";
-import MyMap from "../../containers/BookingPage/CurrentLocation";
 import { mount } from "enzyme";
 import { waitFor } from "@testing-library/react";
 import toJson from "enzyme-to-json";
-import { Marker } from "leaflet";
 
 jest.mock(
   "../../containers/BookingPage/CurrentLocation",
