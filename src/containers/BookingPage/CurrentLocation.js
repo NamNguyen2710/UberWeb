@@ -11,12 +11,14 @@ function MyMap(props) {
   useEffect(() => {
     const { current = {} } = mapRef;
     const { leafletElement: map } = current;
-    map.locate({ setView: true });
+    map.locate({ setView: true, timeout: 1000 });
     map.on("locationfound", (e) => {
+      console.log("found");
       props.searchHome({ lat: e.latlng.lat, lng: e.latlng.lng });
       setLocation(e.latlng);
     });
     map.on("locationerror", () => {
+      console.log("not found");
       props.searchHome({ lat: null, lng: null });
     });
   }, []);
