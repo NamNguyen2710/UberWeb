@@ -1,10 +1,10 @@
 import React from "react";
-
-import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
 import Home from "../containers/HomePage/Home";
 
 describe("Home", () => {
   it("should render", () => {
-    shallow(<Home />);
+    const snapshot = renderer.create(<Home />).toJSON();
+    expect(snapshot).toMatchSnapshot();
   });
 });

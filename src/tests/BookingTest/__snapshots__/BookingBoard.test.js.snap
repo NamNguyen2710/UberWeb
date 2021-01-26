@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Booking board Booking flow render correctly 1`] = `
+<div
+  className="confirm-board"
+>
+  <div
+    className="row"
+    onClick={[Function]}
+  >
+    <img
+      alt="from"
+      src="location-marker.png"
+    />
+    <div
+      className="col"
+    >
+      <h4>
+        From
+      </h4>
+      
+    </div>
+  </div>
+  <div
+    className="row"
+    onClick={[Function]}
+  >
+    <img
+      alt="to"
+      src="location-marker.png"
+    />
+    <div
+      className="col"
+    >
+      <h4>
+        To
+      </h4>
+      
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Prize: $9,76
+      </h4>
+      <p>
+        Kilometer: 3.85km
+      </p>
+      <p>
+        Time: 35 minutes
+      </p>
+    </div>
+    <div>
+      Fare Breakdown
+    </div>
+  </div>
+  <div
+    className="btn-row"
+  >
+    <button
+      className="back-btn"
+      onClick={[Function]}
+    >
+      ← Back
+    </button>
+    <button
+      className="black-btn"
+      onClick={[MockFunction]}
+    >
+      Confirm →
+    </button>
+  </div>
+</div>
+`;
