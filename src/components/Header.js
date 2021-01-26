@@ -1,4 +1,5 @@
 import React from "react";
+import router from "../router";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import { UserContext } from "./User-context";
@@ -38,10 +39,16 @@ class Header extends React.Component {
             </UserContext.Consumer>
             <Dropdown>
               <li>
-                <Link to="/">Home</Link>
+                <Link to={router.HOME}>Home</Link>
               </li>
               <li>
-                <Link to="/booking">Your Book</Link>
+                <Link to={router.BOOKING}>Your Book</Link>
+              </li>
+              <li>
+                <Link to={router.LOGIN}>Log In</Link>
+              </li>
+              <li>
+                <Link to={router.SIGNUP}>Sign Up</Link>
               </li>
             </Dropdown>
           </div>

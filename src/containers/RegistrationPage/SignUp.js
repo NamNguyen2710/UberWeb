@@ -1,4 +1,5 @@
 import React from "react";
+import router from "../../router";
 import { Redirect } from "react-router-dom";
 import { UserContext } from "../../components/User-context";
 import Info from "./Info";
@@ -35,10 +36,10 @@ class SignUp extends React.Component {
         break;
       case 3:
         this.props.changeUser(values);
-        this.setState({ redirect: "/booking" });
+        this.setState({ redirect: router.BOOKING });
         break;
       default:
-        this.setState({ redirect: "/" });
+        this.setState({ redirect: router.HOME });
     }
   }
 
