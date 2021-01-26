@@ -11,6 +11,7 @@ function MyMap(props) {
   useEffect(() => {
     const { current = {} } = mapRef;
     const { leafletElement: map } = current;
+    console.log(map);
     map.locate({ setView: true, timeout: 1000 });
     map.on("locationfound", (e) => {
       console.log("found");

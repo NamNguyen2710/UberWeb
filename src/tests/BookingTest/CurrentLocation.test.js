@@ -6,15 +6,6 @@ import { waitFor } from "@testing-library/react";
 
 describe("CurrentLocation in booking flow", () => {
   it("render correctly", async () => {
-    navigator.geolocation.getCurrentPosition.mockImplementationOnce(
-      (onSuccess) => {
-        console.log("succ");
-        return Promise.resolve(
-          onSuccess({ coords: { latitude: 10, longitude: 10 } })
-        );
-      }
-    );
-    const searchHome = jest.fn();
     const wrapper = mount(<CurrentLocation searchHome={searchHome} />);
     await waitFor(
       () => {
