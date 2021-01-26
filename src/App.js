@@ -3,6 +3,7 @@ import { UserContext } from "./components/User-context";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Route, Switch } from "react-router-dom";
+import router from "./router";
 import Home from "./containers/HomePage/Home";
 import Booking from "./containers/BookingPage/Booking";
 import SignUp from "./containers/RegistrationPage/SignUp";
@@ -15,45 +16,48 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.changeUser = (value) => {
-      this.setState({
-        user: value.name,
-        gender: value.gender,
-      });
-    };
-
     this.state = {
       user: "",
       gender: "",
-      changeUser: this.changeUser,
     };
+
+    this.changeUser = this.changeUser.bind(this);
+  }
+
+  changeUser(value) {
+    this.setState({
+      user: value.name,
+      gender: value.gender,
+    });
   }
 
   render() {
     return (
       <div className="width-100">
-        <UserContext.Provider value={this.state}>
+        <UserContext.Provider
+          value={{ ...this.state, changeUser: this.changeUser }}
+        >
           <Header />
           <Switch>
-            <Route exact path="/">
+            <Route exact path={router.HOME}>
               <Home />
             </Route>
-            <Route exact path="/login">
+            <Route exact path={router.LOGIN}>
               <Login />
             </Route>
-            <Route exact path="/signup">
+            <Route exact path={router.SIGNUP}>
               <SignUp />
             </Route>
-            <Route exact path="/booking">
+            <Route exact path={router.BOOKING}>
               <Booking />
             </Route>
-            <Route exact path="/contactus">
+            <Route exact path={router.BOOKING}>
               <ContactUs />
             </Route>
-            <Route exact path="/how">
+            <Route exact path={router.HOWITWORKS}>
               <HowItWorks />
             </Route>
-            <Route exact path="/privacy">
+            <Route exact path={router.PRIVACY}>
               <Privacy />
             </Route>
           </Switch>
