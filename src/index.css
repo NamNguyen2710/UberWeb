@@ -286,6 +286,8 @@ input.error {
   padding-left: 10px;
   margin-bottom: 20px;
   background-color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  color: rgb(78, 78, 78);
   /* box-shadow: 5px 5px 8px 4px rgb(200, 200, 200); */
 }
 
@@ -431,7 +433,7 @@ input.error {
 
 .back-btn {
   border: none;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: transparent;
 }
 
 /* #### Contact Us #### */
@@ -452,14 +454,4 @@ input.error {
 .input-col {
   width: 50%;
   margin-right: 10px;
-}
-
-.input-lable {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  padding: 0 5px;
-  background-color: rgba(255, 255, 255, 0.95);
-  color: rgb(78, 78, 78);
 }

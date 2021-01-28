@@ -1,98 +1,101 @@
-import {withRouter} from 'react-router-dom';
-import { Form, Field, ErrorMessage, withFormik } from 'formik';
-import * as yup from 'yup';
+import { withRouter } from "react-router-dom";
+import * as yup from "yup";
 
-const riderList = ['Jaden Gulbrandsen', 'Godascalc Feld', 'Līva Kovac', 'Tanja Hutchinson', 'Boyd Kováč'];
+import { Form, Field, withFormik } from "formik";
+import FieldErrorMessage from "../../components/FieldErrorMessage";
+import Background from "../../components/Background";
+
+const riderList = [
+  "Jaden Gulbrandsen",
+  "Godascalc Feld",
+  "Līva Kovac",
+  "Tanja Hutchinson",
+  "Boyd Kováč",
+];
 
 const ContactUs = () => {
   return (
-    <div className="general-bg">
+    <Background>
       <div className="white-box">
         <div className="contact-box">
           <Form className="contact-form">
             <h2>Contact Us</h2>
 
-            <div className="input-row">
+            <div className="row">
               <div className="input-col">
-                <label className="input-lable">
-                  Your Name:
-                  <Field 
+                <label className="input-row">
+                  <span>Your Name:</span>
+                  <Field
                     className="input-box"
-                    type="text" 
-                    name="name" 
-                    placeholder="Enter your full name" 
+                    type="text"
+                    name="name"
+                    placeholder="Enter your full name"
                   />
                 </label>
-                <ErrorMessage name="name">
-                  { msg => <div className="error-msg">{msg}</div> }
-                </ErrorMessage>
+                <FieldErrorMessage fieldName="name" />
               </div>
+
               <div className="input-col">
-                <label className="input-lable">
-                  Select:
+                <label className="input-row">
+                  <span>Select:</span>
                   <Field className="input-box" as="select" name="rider">
-                    { riderList.map(value => <option value={value} key={value}>{value}</option>) }
+                    {riderList.map((value) => (
+                      <option value={value} key={value}>
+                        {value}
+                      </option>
+                    ))}
                   </Field>
                 </label>
-                <ErrorMessage name="name">
-                  { msg => <div className="error-msg">{msg}</div> }
-                </ErrorMessage>
+                <FieldErrorMessage fieldName="rider" />
               </div>
             </div>
 
-            <div className="input-row">
+            <div className="row">
               <div className="input-col">
-                <label className="input-lable">
-                  Issue:
-                  <Field 
+                <label className="input-row">
+                  <span>Issue:</span>
+                  <Field
                     className="input-box"
-                    type="text" 
-                    name="issue" 
-                    placeholder="Enter your issue" 
+                    type="text"
+                    name="issue"
+                    placeholder="Enter your issue"
                   />
                 </label>
-                <ErrorMessage name="issue">
-                  { msg => <div className="error-msg">{msg}</div> }
-                </ErrorMessage>
+                <FieldErrorMessage fieldName="issue" />
               </div>
+
               <div className="input-col">
-                <label className="input-lable">
-                  Message:
-                  <Field 
+                <label className="input-row">
+                  <span>Message:</span>
+                  <Field
                     className="input-box"
                     type="textarea"
                     name="message"
-                    placeholder="Describe you issues" 
+                    placeholder="Describe you issues"
                   />
                 </label>
-                <ErrorMessage name="message">
-                  { msg => <div className="error-msg">{msg}</div> }
-                </ErrorMessage>
+                <FieldErrorMessage fieldName="message" />
               </div>
             </div>
-            <button className="round-btn" type="submit">→</button>
+            <button className="round-btn" type="submit">
+              →
+            </button>
           </Form>
         </div>
       </div>
-    </div>
+    </Background>
   );
-}
+};
 
 const ContactUsForm = withRouter((props) => {
   const ContactValidation = yup.object().shape({
-    name: yup 
-      .string()
-      .required("Please enter your name"),
+    name: yup.string().required("Please enter your name"),
     rider: yup
       .string()
       .required()
       .oneOf([...riderList, "Choose your country postal code"]),
-    issue: yup 
-      .string()
-      .required("Please enter your issue"),
-    message: yup 
-      .string()
-      .required("Please describe your problems more"),
+    issue: yup.string().required("Please enter your issue"),
+    message: yup.string().required("Please describe your problems more"),
   });
 
   const ContactFormWithFormik = withFormik({
@@ -102,10 +105,12 @@ const ContactUsForm = withRouter((props) => {
       issue: "",
       message: "",
     }),
-    handleSubmit: () => {props.history.push("/")},
+    handleSubmit: () => {
+      props.history.push("/");
+    },
     validationSchema: ContactValidation,
   })(ContactUs);
-  return <ContactFormWithFormik />
-})
+  return <ContactFormWithFormik />;
+});
 
 export default ContactUsForm;

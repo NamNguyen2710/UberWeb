@@ -56,7 +56,7 @@ class App extends React.Component {
             <Route exact path={router.BOOKING}>
               <Booking />
             </Route>
-            <Route exact path={router.BOOKING}>
+            <Route exact path={router.CONTACT}>
               <ContactUs />
             </Route>
             <Route exact path={router.HOWITWORKS}>
