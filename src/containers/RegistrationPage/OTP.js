@@ -40,6 +40,7 @@ const Otp = (props) => {
               key={index}
               value={value}
               autoFocus={index === 0}
+              onChange={() => {}}
               onKeyUp={(event) => inputFocus(event, index)}
             />
           ))}

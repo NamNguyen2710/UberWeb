@@ -25,11 +25,11 @@ class SignUp extends React.Component {
   handleSubmit(values, setSubmitting) {
     switch (this.state.signUpStep) {
       case 1:
+        setSubmitting(false);
         this.setState({
           signUpStep: 2,
           phone: `(${values.postalCode}) ${values.phoneNumber}`,
         });
-        setSubmitting(false);
         break;
       case 2:
         //check OTP
@@ -39,6 +39,7 @@ class SignUp extends React.Component {
         break;
       case 3:
         this.props.changeUser(values);
+        setSubmitting(false);
         this.setState({ redirect: router.BOOKING });
         break;
       default:

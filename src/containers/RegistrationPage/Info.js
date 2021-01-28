@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Form, Field, ErrorMessage, withFormik } from "formik";
+import { Form, Field, withFormik } from "formik";
 import * as yup from "yup";
 import male_avatar from "../../images/male-icon.png";
 import female_avatar from "../../images/female-icon.png";
 import ava_dummy from "../../images/ava-dummy.png";
+import FieldErrorMessage from "../../components/FieldErrorMessage";
 
 const Info = (props) => {
   const [imgSrc, setImgSrc] = useState(ava_dummy);
@@ -35,9 +36,7 @@ const Info = (props) => {
               placeholder="Enter your full name"
             />
           </div>
-          <ErrorMessage name="name">
-            {(msg) => <div className="error-msg">{msg}</div>}
-          </ErrorMessage>
+          <FieldErrorMessage fieldName="name" />
           <h4>Select gender</h4>
           <div>
             <label>
@@ -63,9 +62,7 @@ const Info = (props) => {
               />
             </label>
           </div>
-          <ErrorMessage name="gender">
-            {(msg) => <div className="error-msg">{msg}</div>}
-          </ErrorMessage>
+          <FieldErrorMessage fieldName="gender" />
           <input
             className="ava-input"
             type="file"

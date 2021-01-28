@@ -1,11 +1,14 @@
-import { Form, Field, ErrorMessage, withFormik } from "formik";
 import * as yup from "yup";
+
+import { Form, Field, withFormik } from "formik";
+import FieldErrorMessage from "../../components/FieldErrorMessage";
 
 const Phone = (props) => {
   return (
     <div className="signupForm">
       <Form className="col">
         <h2>Get moving with Uber</h2>
+
         <div className="input-row">
           <Field className="input-box" as="select" name="postalCode">
             {props.postalCodeList.map((value) => (
@@ -21,16 +24,14 @@ const Phone = (props) => {
             placeholder="Enter your mobile number"
           />
         </div>
-        <ErrorMessage name="phoneNumber">
-          {(msg) => <div className="error-msg">{msg}</div>}
-        </ErrorMessage>
+        <FieldErrorMessage fieldName="phoneNumber" />
+
         <label className="cursor-pointer">
           <Field type="checkbox" name="agreeTerm" />
           Agree Terms and Conditions
         </label>
-        <ErrorMessage name="agreeTerm">
-          {(msg) => <div className="error-msg">{msg}</div>}
-        </ErrorMessage>
+        <FieldErrorMessage fieldName="agreeTerm" />
+
         <button className="round-btn" type="submit">
           →
         </button>
