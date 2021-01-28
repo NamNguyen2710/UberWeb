@@ -87,30 +87,27 @@ const ContactUs = () => {
   );
 };
 
-const ContactUsForm = withRouter((props) => {
-  const ContactValidation = yup.object().shape({
-    name: yup.string().required("Please enter your name"),
-    rider: yup
-      .string()
-      .required()
-      .oneOf([...riderList, "Choose your country postal code"]),
-    issue: yup.string().required("Please enter your issue"),
-    message: yup.string().required("Please describe your problems more"),
-  });
+const ContactValidation = yup.object().shape({
+  name: yup.string().required("Please enter your name"),
+  rider: yup
+    .string()
+    .required()
+    .oneOf([...riderList], "Choose your driver"),
+  issue: yup.string().required("Please enter your issue"),
+  message: yup.string().required("Please describe your problems more"),
+});
 
-  const ContactFormWithFormik = withFormik({
+export default withRouter(
+  withFormik({
     mapPropsToValues: () => ({
       name: "",
-      rider: riderList[0],
+      rider: "",
       issue: "",
       message: "",
     }),
-    handleSubmit: () => {
-      props.history.push("/");
+    handleSubmit: (value, bag) => {
+      bag.props.history.push("/");
     },
     validationSchema: ContactValidation,
-  })(ContactUs);
-  return <ContactFormWithFormik />;
-});
-
-export default ContactUsForm;
+  })(ContactUs)
+);

@@ -56,6 +56,9 @@ function Header() {
                         </li>
                       </>
                     )}
+                    <li>
+                      <Link to={router.CONTACT}>Contact Us</Link>
+                    </li>
                   </Dropdown>
                 </>
               );
