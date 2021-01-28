@@ -17,14 +17,26 @@ class Footer extends React.Component {
             <Link to={router.PRIVACY}>Privacy & Security</Link>
           </div>
           <div className="iconBox">
-            <a href="https://www.facebook.com">
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://www.facebook.com"
+            >
               <img className="icon" src={fb_ico} alt="Fb_icon" />
             </a>
-            <a href="https://www.linkedin.com">
-              <img className="icon" src={yt_ico} alt="Linked_icon" />
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://www.linkedin.com"
+            >
+              <img className="icon" src={linked_ico} alt="Linked_icon" />
             </a>
-            <a href="https://www.youtube.com">
-              <img className="icon" src={linked_ico} alt="Youtube_icon" />
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://www.youtube.com"
+            >
+              <img className="icon" src={yt_ico} alt="Youtube_icon" />
             </a>
           </div>
         </div>

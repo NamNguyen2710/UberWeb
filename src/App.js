@@ -2,7 +2,7 @@ import React from "react";
 import { UserContext } from "./components/User-context";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import router from "./router";
 import Home from "./containers/HomePage/Home";
 import Booking from "./containers/BookingPage/Booking";
@@ -39,6 +39,11 @@ class App extends React.Component {
         >
           <Header />
           <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => <Redirect to={router.HOME} />}
+            />
             <Route exact path={router.HOME}>
               <Home />
             </Route>

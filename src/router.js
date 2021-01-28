@@ -1,5 +1,5 @@
 const Router = {
-  HOME: "/",
+  HOME: "/home",
   LOGIN: "/login",
   SIGNUP: "/signup",
   BOOKING: "/booking",

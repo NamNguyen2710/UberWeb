@@ -1,18 +1,22 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { UserContext } from "../../components/User-context";
-import { Form, Field, ErrorMessage, withFormik } from "formik";
 import * as yup from "yup";
+
+import { UserContext } from "../../components/User-context";
+
+import Background from "../../components/Background";
+import { Form, Field, withFormik } from "formik";
+import FieldErrorMessage from "../../components/FieldErrorMessage";
 
 function Login() {
   return (
-    <div className="general-bg">
+    <Background>
       <div className="white-box">
         <div className="login-form">
           <Form className="col">
             <h3>Log In</h3>
             <label className="input-row">
-              Username:
+              <span>Username:</span>
               <Field
                 className="input-box"
                 type="text"
@@ -21,7 +25,7 @@ function Login() {
               />
             </label>
             <label className="input-row">
-              Password:
+              <span>Password:</span>
               <Field
                 className="input-box"
                 type="text"
@@ -29,40 +33,36 @@ function Login() {
                 placeholder="Password"
               />
             </label>
-            <ErrorMessage name="username">
-              {(msg) => <div className="error-msg">{msg}</div>}
-            </ErrorMessage>
-            <ErrorMessage name="password">
-              {(msg) => <div className="error-msg">{msg}</div>}
-            </ErrorMessage>
+            <FieldErrorMessage fieldName="username" />
+            <FieldErrorMessage fieldName="password" />
             <button className="round-btn" type="submit">
               →
             </button>
           </Form>
         </div>
       </div>
-    </div>
+    </Background>
   );
 }
 
-const LoginForm = withRouter((props) => {
-  const LoginSchema = yup.object({
-    username: yup.string().required("Please enter username"),
-    password: yup.string().required("Please enter password"),
-  });
-  const LoginWithFormik = withFormik({
+const LoginSchema = yup.object({
+  username: yup.string().required("Please enter username"),
+  password: yup.string().required("Please enter password"),
+});
+
+const LoginForm = withRouter(
+  withFormik({
     mapPropsToValues: () => ({
       username: "",
       password: "",
     }),
-    handleSubmit: (value) => {
-      props.changeUser({ user: value.username });
-      props.history.push("/booking");
+    handleSubmit: (value, bag) => {
+      bag.props.changeUser({ user: value.username });
+      bag.props.history.push("/booking");
     },
     validationSchema: LoginSchema,
-  })(Login);
-  return <LoginWithFormik />;
-});
+  })(Login)
+);
 
 const LoginWithContext = () => (
   <UserContext.Consumer>

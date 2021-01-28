@@ -24,7 +24,7 @@ const Phone = (props) => {
         <ErrorMessage name="phoneNumber">
           {(msg) => <div className="error-msg">{msg}</div>}
         </ErrorMessage>
-        <label>
+        <label className="cursor-pointer">
           <Field type="checkbox" name="agreeTerm" />
           Agree Terms and Conditions
         </label>
