@@ -1,12 +1,14 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React from "react";
+import router from "../router";
+import { Link } from "react-router-dom";
+import Dropdown from "./Dropdown";
+import { UserContext } from "./User-context";
 import uberIco from "../images/Uber_Icon.png";
-import Dropdown from './Dropdown';
-import {UserContext} from './User-context'
+import maleIco from "../images/male-icon.png";
+import femaleIco from "../images/female-icon.png";
 
-class Header extends React.Component{
+class Header extends React.Component {
   render() {
-    const user = this.context;
     return (
       <div className="header">
         <div className="flex">
@@ -14,24 +16,46 @@ class Header extends React.Component{
             <img src={uberIco} alt="Uber Icon" />
             <h2>Uber</h2>
           </div>
-          {user.user && 
-            <div className="userBox">
-              {user.user}
-            </div>
-          }
-          <Dropdown>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/'>Profile</Link></li>
-            <li><Link to='/booking'>Your Book</Link></li>
-            <li><Link to='/'>Favorites</Link></li>
-            <li><Link to='/'>Notifications</Link></li>
-            <li><Link to='/'>Setting</Link></li>
-          </Dropdown>
+          <div className="row">
+            <UserContext.Consumer>
+              {({ user, gender }) => {
+                if (user !== "") {
+                  return (
+                    <div className="userBox">
+                      <div>
+                        <div className="userName">{user}</div>
+                        <div className="userScore">4.89★</div>
+                      </div>
+                      <img
+                        src={gender === "male" ? maleIco : femaleIco}
+                        alt="avatar-ico"
+                      />
+                    </div>
+                  );
+                } else {
+                  return null;
+                }
+              }}
+            </UserContext.Consumer>
+            <Dropdown>
+              <li>
+                <Link to={router.HOME}>Home</Link>
+              </li>
+              <li>
+                <Link to={router.BOOKING}>Your Book</Link>
+              </li>
+              <li>
+                <Link to={router.LOGIN}>Log In</Link>
+              </li>
+              <li>
+                <Link to={router.SIGNUP}>Sign Up</Link>
+              </li>
+            </Dropdown>
+          </div>
         </div>
       </div>
     );
   }
 }
-Header.contextType = UserContext;
 
 export default Header;
