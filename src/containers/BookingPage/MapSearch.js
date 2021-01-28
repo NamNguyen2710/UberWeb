@@ -1,13 +1,24 @@
-import ReactLeafletSearch from 'react-leaflet-search';
-import { LatLng } from 'leaflet';
+import ReactLeafletSearch from "react-leaflet-search";
+import { LatLng } from "leaflet";
 
 function MapSearch(props) {
   return (
-    <ReactLeafletSearch 
+    <ReactLeafletSearch
       position="topleft"
-      search={props.firstSearch ? new LatLng(props.initSearch.lat, props.initSearch.lng) : ''}
-      onChange={({latLng, info}) => {props.handleSearchFound(latLng, info)}}
-      inputPlaceholder="Where would you like to go?"
+      search={
+        props.firstSearch && props.initSearch.lat
+          ? new LatLng(props.initSearch.lat, props.initSearch.lng)
+          : ""
+      }
+      onChange={({ latLng, info }) => {
+        props.handleSearchFound(latLng, info);
+      }}
+      openSearchOnLoad
+      inputPlaceholder={
+        props.searchStage === "to"
+          ? "Where would you like to go?"
+          : "Choose your starting point"
+      }
       showMarker={false}
     />
   );

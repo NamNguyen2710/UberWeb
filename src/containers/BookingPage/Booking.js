@@ -94,6 +94,7 @@ class Booking extends React.Component {
             handleSearchFound={this.handleSearchFound}
             initSearch={this.state.initSearch}
             firstSearch={this.state.firstSearch}
+            searchStage={this.state.searchStage}
           />
         );
       }
