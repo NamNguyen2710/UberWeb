@@ -27,12 +27,14 @@ const Info = (props) => {
       <div className="col">
         <Form className="col">
           <h2>Enter your info</h2>
-          <Field
-            className="input-box"
-            type="text"
-            name="name"
-            placeholder="Enter your full name"
-          />
+          <div className="input-row">
+            <Field
+              className="input-box"
+              type="text"
+              name="name"
+              placeholder="Enter your full name"
+            />
+          </div>
           <ErrorMessage name="name">
             {(msg) => <div className="error-msg">{msg}</div>}
           </ErrorMessage>

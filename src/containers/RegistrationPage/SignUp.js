@@ -1,7 +1,10 @@
 import React from "react";
 import router from "../../router";
 import { Redirect } from "react-router-dom";
+
 import { UserContext } from "../../components/User-context";
+
+import Background from "../../components/Background";
 import Info from "./Info";
 import Otp from "./OTP";
 import Phone from "./Phone";
@@ -75,9 +78,9 @@ class SignUp extends React.Component {
     if (this.state.redirect) return <Redirect to={this.state.redirect} />;
 
     return (
-      <div className="general-bg">
+      <Background>
         <div className="white-box">{signUpStep}</div>
-      </div>
+      </Background>
     );
   }
 }
